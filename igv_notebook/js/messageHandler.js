@@ -112,6 +112,28 @@
                                 document.getElementById(browserID).parentNode.removeChild(container)
                                 break
 
+                            case "render":
+                                const parser = new DOMParser()
+                                const trackSVG = new Blob([browser.toSVG()], {'type': 'image/svg+xml'})
+                                //const container = document.getElementById(browserID)
+                                // Convert Blob to URL
+                                const trackUrl = URL.createObjectURL(trackSVG);
+
+                                // Create an a element with track URL
+                                const anchor = document.createElement('a');
+                                anchor.href = trackUrl;
+                                anchor.target = "_blank";
+                                anchor.download = "tracks.svg";
+
+                                // Auto click on a element, trigger the file download
+                                anchor.click();
+
+                                // cleanup
+                                URL.revokeObjectURL(trackUrl);
+                                anchor.remove()
+
+                                break
+
                             default:
                                 console.error("Unrecognized method: " + msg.command)
                         }

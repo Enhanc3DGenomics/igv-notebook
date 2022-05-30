@@ -113,9 +113,7 @@
                                 break
 
                             case "render":
-                                const parser = new DOMParser()
                                 const trackSVG = new Blob([browser.toSVG()], {'type': 'image/svg+xml'})
-                                //const container = document.getElementById(browserID)
                                 // Convert Blob to URL
                                 const trackUrl = URL.createObjectURL(trackSVG);
 

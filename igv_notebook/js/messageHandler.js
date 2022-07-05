@@ -161,7 +161,7 @@
                 return nbFile
             } else {
                 // Try to treat as relative URL.  This may or may not work
-                return convertURL(url)
+                return convertURL(path)
             }
         }
     }
